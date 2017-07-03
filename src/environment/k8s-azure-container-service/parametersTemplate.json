@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "masterDnsNamePrefix": {
+            "value": ""
+        },
+        "agentDnsNamePrefix": {
+            "value": ""
+        },
+        "agentCount": {
+            "value": 0
+        },
+        "agentVMSize": {
+            "value": ""
+        },
+        "linuxAdminUsername": {
+            "value": ""
+        },
+        "windowsAgentAdminUsername": {
+            "value": ""
+        },
+        "windowsAgentAdminPassword": {
+            "value": ""
+        },
+        "orchestratorType": {
+            "value": ""
+        },
+        "masterCount": {
+            "value": 0
+        },
+        "sshRSAPublicKey": {
+            "value": ""
+        },
+        "servicePrincipalClientId": {
+            "value": ""
+        },
+        "servicePrincipalClientSecret": {
+            "value": ""
+        },
+        "osType": {
+            "value": ""
+        }
+    }
+}

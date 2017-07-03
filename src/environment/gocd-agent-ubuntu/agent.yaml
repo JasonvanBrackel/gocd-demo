@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name:  gocd-agent
+  labels:
+    name:  gocd-agent
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: gocd-agent
+        app: gocd-agent
+    spec:
+      containers:
+      - image:  gocd/gocd/gocd-agent-ubuntu-16.04:v17.7.0
+        imagePullPolicy: Always
+        name:  gocd-agent   
+        volumeMounts:
+        - mountPath: /godata
+          name: godata
+        - mountPath: /home/go
+          name: home
+      volumes:
+        - name: godata
+          persistentVolumeClaim: 
+            claimName: gocd-agent-godata
+        - name: home
+          emptyDir: {}
+      env:
+        - name:  GO_SERVER_URL
+          value: https://gocd-server-http:8153/go"
+        - name: AGENT_AUTO_REGISTER_KEY
+          value: 
+        - name: AGENT_AUTO_RESOURCES
+          value: 
+        - name: AGENT_AUTO_ENVIRONMENTS
+          value: 
+        - name: AGENT_AUTO_HOSTNAME
+          value: ubuntu-1.604
+        
+
+      restartPolicy: Always

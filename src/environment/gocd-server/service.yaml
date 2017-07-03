@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gocd-server
+spec:
+  selector:
+    app:  gocd-server
+  type:  ClusterIP
+  ports:
+  - name:  http
+    port:  8134
+    targetPort: http
+  - name: https
+    port: 8135
+    targetPort: https

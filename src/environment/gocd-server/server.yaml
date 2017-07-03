@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name:  gocd-server
+  labels:
+    name:  gocd-server
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: gocd-server
+        app: gocd-server
+    spec:
+      containers:
+      - image:  gocd/gocd-server:v17.7.0
+        imagePullPolicy: Always
+        name:  gocd-server   
+        ports:
+        - containerPort:  8153
+          name:  http
+        - containerPort: 8154
+          name: https
+        volumeMounts:
+        - mountPath: /godata
+          name: godata
+        - mountPath: /home/go
+          name: home
+      volumes:
+        - name: godata
+          persistentVolumeClaim: 
+            claimName: gocd-godata
+        - name: home
+          emptyDir: {}
+      restartPolicy: Always

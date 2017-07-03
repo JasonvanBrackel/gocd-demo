@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  # the name assigned here for our persistent volume
+  # is referenced by the Deployment in volumes: persistentVolumeClaim: claimName
+  name: gocd-agent-godata
+  annotations:
+    volume.alpha.kubernetes.io/storage-class: default
+# permissions and size of the volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500M
