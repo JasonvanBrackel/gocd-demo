@@ -33,7 +33,7 @@ spec:
           emptyDir: {}
       env:
         - name:  GO_SERVER_URL
-          value: https://gocd-server-http:8153/go"
+          value: https://gocd-server-http:8154/go"
         - name: AGENT_AUTO_REGISTER_KEY
           value: 
         - name: AGENT_AUTO_RESOURCES

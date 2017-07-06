@@ -4,6 +4,7 @@ metadata:
   name:  gocd-server
   labels:
     name:  gocd-server
+    app: gocd-server
 spec:
   strategy:
     rollingUpdate:
@@ -23,8 +24,10 @@ spec:
         ports:
         - containerPort:  8153
           name:  http
+          protocol: TCP
         - containerPort: 8154
           name: https
+          protocol: TCP
         volumeMounts:
         - mountPath: /godata
           name: godata

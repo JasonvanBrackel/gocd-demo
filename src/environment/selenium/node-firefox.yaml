@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: selenium-node-firefox
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: selnium-node-firefox
+    spec:
+      containers:
+      - name: selenium-node-firefox
+        image: selenium/NodeFirefox

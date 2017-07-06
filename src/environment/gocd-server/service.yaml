@@ -5,11 +5,11 @@ metadata:
 spec:
   selector:
     app:  gocd-server
-  type:  ClusterIP
+  type:  LoadBalancer
   ports:
   - name:  http
-    port:  8134
+    port:  8153
     targetPort: http
   - name: https
-    port: 8135
+    port: 8154
     targetPort: https

@@ -1,0 +1,1 @@
+apt install gnupg2 -y

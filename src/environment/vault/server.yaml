@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name:  vault
+  labels:
+    name:  vault
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: vault
+        app:  vault
+    spec:
+      containers:
+      - image:  valut:
+        name:  vault
+        env:
+        - name:  VAULT_DEV_ROOT_TOKEN_ID
+          value:  myroot
+        - name: VAULT_DEV_LISTEN_ADDRESS
+          value: 0.0.0.0:8200       
+        ports:
+        - containerPort:  8200
+          name:  vault
+          protocol: TCP

@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: selenium-hub
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: selnium-hub
+    spec:
+      containers:
+      - name: selenium-hub
+        image: selenium/hub
+      ports:
+      - name:  http
+        port:  4444
+        protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  selenium-hub
+spec:
+  selector:
+    app:  selenium-hub
+  type:  Cluster
+  ports:
+  - name:  http
+    port:  4444

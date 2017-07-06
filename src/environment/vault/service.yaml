@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  vault
+spec:
+  selector:
+    app:  vault
+  type:  Cluster
+  ports:
+  - name:  vault
+    port:  8200
